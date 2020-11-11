@@ -1,0 +1,15 @@
+#faja-section {
+  .section-container {
+    width: 50%;
+    min-height: 100vh;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .image-container {
+      img {
+        height: 50vh;
+      }
+    }
+  }
+}

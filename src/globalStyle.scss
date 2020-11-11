@@ -1,0 +1,50 @@
+$primary: #ce382c;
+$secundary: #626262;
+
+@font-face {
+  src: url(fonts/LeagueGothic-Regular.otf);
+  font-family: League Gothic;
+}
+
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+body {
+  overflow-x: hidden;
+}
+a,
+li {
+  list-style-type: none;
+  text-decoration: none;
+  color: $secundary;
+}
+h1 {
+  font-size: 1.8rem;
+  color: $secundary;
+  font-family: "League Gothic";
+}
+h2 {
+  font-size: 2rem;
+  color: $primary;
+  font-family: "League Gothic";
+}
+h3 {
+  font-size: 1.8rem;
+  color: $secundary;
+  font-family: "League Gothic";
+}
+h4,
+button {
+  font-size: 1rem;
+  color: $secundary;
+  font-family: "League Gothic";
+}
+
+p,
+a,
+li {
+  font-size: 1rem;
+  font-family: "Poppins";
+}
