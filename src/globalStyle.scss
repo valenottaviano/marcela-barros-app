@@ -1,11 +1,6 @@
 $primary: #ce382c;
 $secundary: #626262;
 
-@font-face {
-  src: url(fonts/LeagueGothic-Regular.otf);
-  font-family: League Gothic;
-}
-
 * {
   margin: 0px;
   padding: 0px;
@@ -21,30 +16,31 @@ li {
   color: $secundary;
 }
 h1 {
-  font-size: 1.8rem;
+  font-size: 1.3rem;
   color: $secundary;
-  font-family: "League Gothic";
+  font-family: "Oswald";
 }
 h2 {
   font-size: 2rem;
   color: $primary;
-  font-family: "League Gothic";
+  font-family: "Oswald";
 }
 h3 {
   font-size: 1.8rem;
   color: $secundary;
-  font-family: "League Gothic";
+  font-family: "Oswald";
 }
 h4,
 button {
   font-size: 1rem;
   color: $secundary;
-  font-family: "League Gothic";
+  font-family: "Oswald";
 }
 
 p,
 a,
-li {
+li,
+label {
   font-size: 1rem;
   font-family: "Poppins";
 }
