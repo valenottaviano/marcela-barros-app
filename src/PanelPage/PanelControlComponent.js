@@ -6,7 +6,6 @@ import OrdersList from "./OrdersListComponent";
 
 export default function PanelControl() {
   const [data, setData] = useState({});
-
   useEffect(() => {
     const request = async () => {
       let req = {
@@ -26,21 +25,23 @@ export default function PanelControl() {
     request();
   }, []);
 
+  let renderedProducts;
+  const handleRenderedProducts = () => {
+    if (data.products !== undefined) {
+      renderedProducts = data.products.size.map((size, index) => {
+        return <StockProduct data={size} index={index} />;
+      });
+    }
+  };
+  handleRenderedProducts();
+
   return (
     <div>
       <div className="container">
         <form action="#">
-          <div>
-            <StockProduct productName="Faja Azul S" color="blue" size="s" />
-            <StockProduct productName="Faja Rosa S" color="pink" size="s" />
-            <StockProduct productName="Faja Azul M" color="blue" size="m" />
-            <StockProduct productName="Faja Rosa M" color="pink" size="m" />
-            <StockProduct productName="Faja Azul L" color="blue" size="l" />
-            <StockProduct productName="Faja Rosa L" color="blue" size="l" />
-          </div>
-          <button type="submit">Actualizar Stock</button>
+          <div className="form-container">{renderedProducts}</div>
         </form>
-        <OrdersList data={data} />
+        <OrdersList data={data.orders} />
       </div>
     </div>
   );

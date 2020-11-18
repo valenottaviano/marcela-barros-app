@@ -14,10 +14,11 @@ export default function OrdersList(props) {
         return (
           <div className="order" key={index}>
             <h3>{order.clientName}</h3>
-            <p>Id: {order._id}</p>
+            <p>{order._id}</p>
             <p>Fecha: {order.date}</p>
             <p>Color: {order.productOrdered.color}</p>
             <p>Size: {order.productOrdered.size.toUpperCase()}</p>
+            <p>Email: {order.clientEmail}</p>
           </div>
         );
       });

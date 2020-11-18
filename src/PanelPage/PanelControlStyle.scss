@@ -7,7 +7,6 @@
   align-items: center;
   justify-content: center;
   button {
-    width: 30%;
     padding: 1rem;
     border: none;
     background: rgb(85, 85, 85);
@@ -20,10 +19,10 @@
     flex-direction: column;
     align-items: center;
     margin-bottom: 5rem;
-    div {
+    .form-container {
+      width: 100%;
       flex-wrap: wrap;
       display: flex;
-      width: 100%;
     }
   }
 }

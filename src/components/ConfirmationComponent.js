@@ -1,5 +1,4 @@
 import React from "react";
-import Button from "./ButtonComponent";
 import "./ConfirmationStyle.scss";
 
 export default function Confirmacion(props) {
@@ -7,24 +6,24 @@ export default function Confirmacion(props) {
     <section className="confirmation">
       <form
         className="details"
-        action="https://marcela-barros.herokuapp.com/api/product/pay"
+        action="http://localhost:5000/api/product/pay"
         method="POST"
       >
         <input
           name="size"
-          value={props.selection.size}
+          value={props.selection.size.size}
           className="hide"
           readOnly
         />
         <input
           name="color"
-          value={props.selection.color}
+          value={props.selection.color.color}
           className="hide"
           readOnly
         />
         <h2>Confirmación de Pedido</h2>
-        <h4>Talle: {props.selection.size.toUpperCase()}</h4>
-        <h4>Color: {props.selection.color === "pink" ? "Rosa" : "Azul"}</h4>
+        <h4>Talle: {props.selection.size.size.toUpperCase()}</h4>
+        <h4>Color: {props.selection.color.color}</h4>
         <div>
           <label>Nombre</label>
           <input type="text" required name="name" />

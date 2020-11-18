@@ -1,9 +1,18 @@
 .order {
-  padding: 1rem;
+  padding: 1rem 2rem;
   box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.192);
   min-width: 100%;
   margin: 1rem 0rem;
   border-radius: 20px;
+  position: relative;
+  .button {
+    color: rgb(179, 43, 43);
+    top: 2rem;
+    right: 3rem;
+    position: absolute;
+    font-size: 2rem;
+    cursor: pointer;
+  }
 }
 .orders-list {
   padding: 3rem 0rem;

@@ -9,11 +9,12 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Biografia from "./components/BiografiaComponent";
 import Testimonios from "./components/TestimoniosSection";
 import Confirmacion from "./components/ConfirmationComponent";
+import GallerySection from "./components/GallerySection";
 
 // selection data
 let selection = {
-  size: "",
-  color: "",
+  size: {},
+  color: {},
 };
 
 const dataRaise = (sizeSelected, colorSelected) => {
@@ -35,6 +36,7 @@ export default function App() {
             <Biografia />
             <Testimonios />
             <FajaSection dataRaise={dataRaise} />
+            <GallerySection />
           </Fragment>
         )}
       />
@@ -53,7 +55,7 @@ export default function App() {
         render={(props) => (
           <Fragment>
             <NavBar />
-            <PanelControl />
+            <PanelControl selection={selection} />
           </Fragment>
         )}
       />
@@ -77,7 +79,16 @@ export default function App() {
           </Fragment>
         )}
       />
-      <Route path="/galeria" />
+      <Route
+        path="/galeria"
+        render={() => (
+          <Fragment>
+            <NavBar />
+            <Biografia />
+            <GallerySection />
+          </Fragment>
+        )}
+      />
     </Router>
   );
 }

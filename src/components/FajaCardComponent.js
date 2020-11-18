@@ -1,112 +1,103 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import FajaCardStyle from "./FajaCardStyle.scss";
+import "./FajaCardStyle.scss";
 import axios from "axios";
 
 export default function FajaCard(props) {
-  //leveling up state
+  // leveling up state
   const dataRaise = (size, color) => {
     props.dataRaise(size, color);
   };
-  // color and size handlers
+
   let history = useHistory();
+
   const [data, setData] = useState({});
+  const [sizeSelected, setSizeSelected] = useState({ size: null, index: null });
+  const [colorSelected, setColorSelected] = useState({
+    color: null,
+    index: null,
+  });
+  let selection = [sizeSelected, colorSelected];
+  let temp;
 
-  const [sizeSelected, setSizeSelected] = useState("s");
-  const [colorSelected, setColorSelected] = useState("pink");
-
-  let selection;
-
-  const handleSelectedProduct = () => {
-    if (data.size !== undefined) {
-      selection = String("data.size." + sizeSelected + "." + colorSelected);
-    }
-  };
-
-  handleSelectedProduct();
+  let selectionCommand = String(
+    temp + "[" + sizeSelected.index + "].Object[2]"
+  );
 
   const isInStock = () => {
-    if (selection && data.size && sizeSelected && colorSelected) {
+    if (sizeSelected.size !== null && colorSelected.color !== null) {
+      temp = String(`data.size[${sizeSelected.index}]`);
+      let selection = String(
+        `${temp}[0].${sizeSelected.size}[${colorSelected.index}].${colorSelected.color}`
+      );
       return eval(selection);
     }
   };
 
   useEffect(() => {
     const productRequest = async () => {
-      const data = await axios.get(
-        "https://marcela-barros.herokuapp.com/api/product/faja"
-      );
+      const data = await axios.get("http://localhost:5000/api/product/faja");
       setData(data.data);
     };
     productRequest();
   }, []);
 
-  const sizeHandler = (size) => {
-    setSizeSelected(size);
+  let renderedSizes;
+  const handleRenderedSizes = () => {
+    if (data.name !== undefined) {
+      renderedSizes = data.size.map((size, index) => {
+        let name = size[1].name;
+        return (
+          <div
+            className={`talle ${name === sizeSelected.size ? "selected" : ""}`}
+            key={index}
+            onClick={() => setSizeSelected({ size: name, index: index })}
+          >
+            {name.toUpperCase()}
+          </div>
+        );
+      });
+    }
   };
+  handleRenderedSizes();
 
-  const colorHandler = (color) => {
-    setColorSelected(color);
+  let renderedColors;
+  const handleRenderedColors = () => {
+    if (data.name !== undefined) {
+      let colors = ["pink", "blue", "green"];
+      renderedColors = colors.map((color, index) => {
+        return (
+          <div
+            className={`color ${
+              color === colorSelected.color ? "selected" : ""
+            }`}
+            onClick={() => {
+              setColorSelected({ color: color, index: index });
+            }}
+            key={index}
+          >
+            {color}
+          </div>
+        );
+      });
+    }
   };
-
-  // const checkAval = () => {
-  //   setSelectedProduct(eval(selectedProduct));
-  // };
+  handleRenderedColors();
 
   return (
     <div id="faja-card">
+      {!data.name ? <h3>Cargando...</h3> : null}
+
       <div className={`product-container ${isInStock() ? "" : "no-stock"}`}>
         <img src="img/faja-product.png" alt="faja card" />
         <div className="gradient"></div>
         <h3>SIN STOCK</h3>
       </div>
+
       <h4>{data.name}</h4>
       <p>Sistema único en el mercado</p>
-      <div className="talles-container">
-        Talles:
-        <div
-          className={`talle ${sizeSelected === "s" ? "selected" : ""}`}
-          onClick={() => {
-            sizeHandler("s");
-          }}
-        >
-          S
-        </div>
-        <div
-          className={`talle ${sizeSelected === "m" ? "selected" : ""}`}
-          onClick={() => {
-            sizeHandler("m");
-          }}
-        >
-          M
-        </div>
-        <div
-          className={`talle ${sizeSelected === "l" ? "selected" : ""}`}
-          onClick={() => {
-            sizeHandler("l");
-          }}
-        >
-          L
-        </div>
-      </div>
-      <div className="colors-container">
-        <div
-          className={`color ${colorSelected === "pink" ? "selected" : ""}`}
-          onClick={() => {
-            colorHandler("pink");
-          }}
-        >
-          Rosa
-        </div>
-        <div
-          className={`color ${colorSelected === "blue" ? "selected" : ""}`}
-          onClick={() => {
-            colorHandler("blue");
-          }}
-        >
-          Azul
-        </div>
-      </div>
+      <div className="talles-container">{renderedSizes}</div>
+      <div className="colors-container">{renderedColors}</div>
       <a href="https://api.whatsapp.com/send/?phone=5493814661789&text=Hola%21+Necesito+informaci%C3%B3n+sobre+talles+especiales.&app_absent=0">
         Consultar talles especiales.
       </a>
