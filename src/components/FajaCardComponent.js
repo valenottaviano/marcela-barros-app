@@ -37,7 +37,7 @@ export default function FajaCard(props) {
   useEffect(() => {
     const productRequest = async () => {
       const data = await axios.get(
-        "https://marcela-barros.herokuapp.com//api/product/faja"
+        "https://marcela-barros.herokuapp.com/api/product/faja"
       );
       setData(data.data);
     };

@@ -34,13 +34,11 @@ export default function App() {
             <Hero />
             <Banner />
             <Biografia />
-            <Testimonios />
             <FajaSection dataRaise={dataRaise} />
-            <GallerySection />
+            <Testimonios />
           </Fragment>
         )}
       />
-
       <Route
         path="/faja"
         render={(props) => (
@@ -72,20 +70,20 @@ export default function App() {
       />
       <Route
         exact
-        path="/confirmacion"
+        path="/galeria"
         render={(props) => (
           <Fragment>
-            <Confirmacion selection={selection} />
+            <NavBar />
+            <GallerySection />
           </Fragment>
         )}
       />
       <Route
-        path="/galeria"
-        render={() => (
+        exact
+        path="/confirmacion"
+        render={(props) => (
           <Fragment>
-            <NavBar />
-            <Biografia />
-            <GallerySection />
+            <Confirmacion selection={selection} />
           </Fragment>
         )}
       />

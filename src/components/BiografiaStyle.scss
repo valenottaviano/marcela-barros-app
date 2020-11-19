@@ -22,6 +22,16 @@ $secundary: #626262;
   }
   p {
     color: $secundary;
+    margin-bottom: 2rem;
+  }
+  .text-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    button {
+      // margin-top: 2rem;
+    }
   }
 }
 

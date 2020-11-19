@@ -1,5 +1,7 @@
 import React from "react";
 import "./BiografiaStyle.scss";
+import ButtonComponent from "./ButtonComponent";
+import { Link } from "react-router-dom";
 
 export default function Biografia() {
   return (
@@ -16,6 +18,19 @@ export default function Biografia() {
           amet, consectetur adipiscing elit. Fermentum, eget proin sit sed
           fermentum
         </p>
+        <Link
+          to="/galeria"
+          onClick={() => {
+            window.scrollTo(0, 0);
+          }}
+        >
+          <ButtonComponent
+            background="#ce382c"
+            text="Ver Galería"
+            color="white"
+            className="button-galeria"
+          />
+        </Link>
       </div>
     </section>
   );
