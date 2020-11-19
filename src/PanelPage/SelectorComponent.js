@@ -18,7 +18,7 @@ export default function SelectorComponent({
       },
     };
     const res = await axios.put(
-      "http://localhost:5000/api/product/faja",
+      "https://marcela-barros.herokuapp.com//api/product/faja",
       {
         // size: "size",
         // color: "colorName",

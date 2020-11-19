@@ -6,7 +6,7 @@ export default function Confirmacion(props) {
     <section className="confirmation">
       <form
         className="details"
-        action="http://localhost:5000/api/product/pay"
+        action="https://marcela-barros.herokuapp.com//api/product/pay"
         method="POST"
       >
         <input
